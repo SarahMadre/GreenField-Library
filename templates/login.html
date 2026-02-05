@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-wrapper">
+    <div class="form-card">
+        <h2 class="form-title">Login to <span class="text-green">Library</span></h2>
+        <p class="form-subtitle">Welcome back! Please enter your details.</p>
+        
+        <form method="post">
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" name="email" placeholder="name@university.edu" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="••••••••" required>
+            </div>
+
+            <div class="form-group">
+                <label>Login As</label>
+                <select name="role" required>
+                    <option value="student">Student</option>
+                    <option value="staff">Staff</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-hero btn-green w-100">Sign In</button>
+        </form>
+        <p class="form-footer">Don't have an account? <a href="/register">Register here</a></p>
+    </div>
+</div>
+{% endblock %}

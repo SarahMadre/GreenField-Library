@@ -1,0 +1,17 @@
+<h2>Available Books</h2>
+
+<ul>
+{% for id, book in books.items() %}
+    <li>
+        {{ book.title }} -
+        {% if book.available %}
+            Available
+        {% else %}
+            Not Available
+            <a href="/request/{{id}}">Request</a>
+        {% endif %}
+    </li>
+{% endfor %}
+</ul>
+
+<a href="/dashboard">Back to Dashboard</a>

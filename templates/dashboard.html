@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+    .btn-download {
+        background-color: #1f2933;
+        color: white !important;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-weight: 600;
+        text-align: center;
+        display: block;
+        transition: 0.3s;
+    }
+    .btn-download:hover {
+        background-color: #1f2933;
+        transform: translateY(-2px);
+    }
+    .in-stock-container {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+</style>
+
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1 class="hero-title">Digital <span class="text-green">Catalog</span></h1>
+        <p class="hero-subtitle">Explore available resources or request unavailable textbooks.</p>
+    </div>
+
+    <div class="card-grid">
+        {% for id, book in books.items() %}
+        <div class="catalog-card">
+            <div class="card-top">
+                <span class="subject-badge">{{ book.subject }}</span>
+                {% if book.available %}
+                    <span class="dot-status status-success" title="Available"></span>
+                {% else %}
+                    <span class="dot-status status-danger" title="Requested"></span>
+                {% endif %}
+            </div>
+            
+            <div class="card-content">
+                <h3 class="book-name">{{ book.title }}</h3>
+                <p class="book-meta">BSC Computer Science Resource</p>
+                
+                <div class="card-footer">
+                    {% if not book.available %}
+                        <a href="/request/{{ id }}" class="btn-card-action">Request Copy</a>
+                    {% else %}
+                        <div class="in-stock-container">
+                            <span class="in-stock-label" style="margin-bottom: 5px; display: block;">✓ In Stock</span>
+                            <a href="{{ book.s3_url }}" class="btn-download" target="_blank">
+                                Download PDF
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="dashboard-header mt-80">
+        <h1 class="hero-title">My <span class="text-green">Requests</span></h1>
+    </div>
+
+    {% if my_requests %}
+    <div class="request-list">
+        {% for r in my_requests %}
+        <div class="request-item-card">
+            <div class="request-info">
+                <div class="request-icon">📚</div>
+                <div>
+                    <h4 class="request-title">{{ r.book }}</h4>
+                    <p class="request-subtext">Status: <strong>{{ r.status }}</strong></p>
+                </div>
+            </div>
+            
+            <div class="request-status-area">
+                <span class="status-pill {% if r.status == 'Pending' %}status-warning{% elif r.status == 'Available' %}status-success{% else %}status-info{% endif %}">
+                    {{ r.status }}
+                </span>
+                {% if r.status == 'Available' %}
+                <p class="text-small text-green">You can now download this from the catalog!</p>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state-card">
+        <p>No active requests found. Your academic journey starts here!</p>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="about-container">
+    <header class="about-header">
+        <h1 class="hero-title">About <span class="text-green">Instant Library</span></h1>
+        <p class="hero-subtitle">Solving resource scarcity for the BSC Computer Science department through cloud-native innovation.</p>
+    </header>
+
+    <div class="about-grid">
+        <div class="info-card highlight-card">
+            <div class="card-icon">⚠️</div>
+            <h3>The Challenge</h3>
+            <p>Our BSC Computer Science department faces a critical shortage of physical textbooks. With a growing student population, long wait times for essential study materials have become a barrier to academic success.</p>
+        </div>
+
+        <div class="info-card highlight-card">
+            <div class="card-icon">💡</div>
+            <h3>Our Solution</h3>
+            <p>Instant Library is a virtual platform designed to bridge the gap between students and knowledge. By digitizing the catalog, we provide seamless, anytime access to high-quality learning resources.</p>
+        </div>
+    </div>
+
+    <div class="features-section">
+        <h2 class="section-title text-center">Core Functionalities <span class="text-green">(MVP)</span></h2>
+        <div class="feature-steps">
+            <div class="step">
+                <span class="step-number">01</span>
+                <h4>Seamless Access</h4>
+                <p>Register, login, and browse a digital catalog of e-books across core subjects like Mathematics and English.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">02</span>
+                <h4>Real-time Alerts</h4>
+                <p>Integrated with <strong>AWS SNS</strong> to send instant email notifications to both students and staff regarding request updates.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">03</span>
+                <h4>Cloud Persistence</h4>
+                <p>A secure request system integrated with <strong>Amazon DynamoDB</strong> for reliable tracking of book availability.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="impact-grid">
+        <div class="impact-box">
+            <h4>Social & Business Impact</h4>
+            <p>We ensure equitable access to study materials, fostering a better learning environment and streamlining communication between the student body and library administration.</p>
+        </div>
+        <div class="impact-box">
+            <h4>Security & Architecture</h4>
+            <p>Hosted with professional-grade security, utilizing strict <strong>AWS Security Groups</strong> (SSH, HTTP, HTTPS) to ensure data integrity and secure public access.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

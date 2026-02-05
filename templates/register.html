@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-wrapper">
+    <div class="form-card wide-card">
+        <h2 class="form-title">Student <span class="text-green">Registration</span></h2>
+        <p class="form-subtitle">Create your account to access digital resources.</p>
+        
+        <form method="post">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Roll Number</label>
+                    <input type="text" name="roll_no" placeholder="UG12345" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Semester</label>
+                    <input type="text" name="semester" placeholder="e.g. 4th" required>
+                </div>
+                <div class="form-group">
+                    <label>Year</label>
+                    <input type="text" name="year" placeholder="e.g. 2nd" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>University Email</label>
+                <input type="email" name="email" placeholder="john.doe@university.edu" required>
+            </div>
+
+            <div class="form-group">
+                <label>Create Password</label>
+                <input type="password" name="password" placeholder="Min. 8 characters" required>
+            </div>
+
+            <button type="submit" class="btn-hero btn-green w-100">Create Account</button>
+        </form>
+        <p class="form-footer">Already have an account? <a href="/login">Login here</a></p>
+    </div>
+</div>
+{% endblock %}

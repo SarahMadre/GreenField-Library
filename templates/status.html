@@ -1,0 +1,9 @@
+<h2>My Book Requests</h2>
+
+<ul>
+{% for r in requests %}
+    <li>{{ r.book }} - {{ r.status }}</li>
+{% endfor %}
+</ul>
+
+<a href="/dashboard">Back to Dashboard</a>

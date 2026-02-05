@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1 class="hero-title">Staff <span class="text-green">Management</span></h1>
+        <p class="hero-subtitle">Review incoming e-book requests and update status for the BSC Computer Science department.</p>
+    </div>
+
+    <div class="stats-row">
+        <div class="stat-card">
+            <span class="stat-label">Total Requests</span>
+            <span class="stat-value">{{ requests|length }}</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Active Users</span>
+            <span class="text-green font-bold">Live</span>
+        </div>
+    </div>
+
+    <div class="staff-request-grid">
+        {% for r in requests %}
+        <div class="staff-card">
+            <div class="staff-card-header">
+                <span class="status-pill {% if r.status == 'Pending' %}status-warning{% elif r.status == 'Available' %}status-success{% else %}status-info{% endif %}">
+                    {{ r.status }}
+                </span>
+                <span class="request-id">#REQ-{{ loop.index + 100 }}</span>
+            </div>
+
+            <div class="staff-card-body">
+                <div class="student-info">
+                    <h3 class="book-name">{{ r.book }}</h3>
+                    <p class="tag-subject"><strong>Subject: </strong>{{ r.subject }}</p>
+                </div>
+
+                <div class="request-details">
+                    <p><strong>Student:</strong> {{ r.student_name }} </p>
+                    <p><strong>Roll No:</strong> {{ r.roll_no }}</p>
+                    <p><strong>Email:</strong> {{ r.student_email }}</p>
+                    <p><strong>Academic:</strong> Sem {{ r.semester }} / Year {{ r.year }}</p>
+                    <blockquote class="staff-quote"><p><strong>Description:</strong>"{{ r.description }}"</blockquote>
+                </div>
+            </div>
+
+            <div class="staff-card-actions">
+                {% if r.status == "Pending" %}
+                    <a href="/staff/update_status/{{ r.id }}/Available" class="btn-staff btn-avail">Mark Available</a>
+                    <a href="/staff/update_status/{{ r.id }}/Resolved" class="btn-staff btn-resolve">Resolve</a>
+                {% elif r.status == "Available" %}
+                    <a href="/staff/update_status/{{ r.id }}/Resolved" class="btn-staff btn-resolve">Finalize Resolution</a>
+                {% else %}
+                    <div class="completed-label">✓ Task Completed</div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if not requests %}
+    <div class="empty-state-card">
+        <p>No pending requests to manage. All students are served!</p>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

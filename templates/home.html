@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="landing-hero">
+    <div class="hero-content">
+        <div class="hero-icon-wrapper">
+            <div class="icon-circle-large">
+                <span class="logo-symbol-xl">|||\</span>
+            </div>
+        </div>
+
+        <h1 class="landing-headline">
+            Greenfield University <br>
+            <span class="text-green-gradient">Instant Library</span>
+        </h1>
+        
+        <p class="landing-description">
+            Experience a new way of learning. Access our digital catalog, request specialized 
+            e-books, and eliminate the wait for physical textbooks.
+        </p>
+
+        <div class="hero-feature-pills">
+            <span class="feature-pill">✓ DynamoDB Persistence</span>
+            <span class="feature-pill">✓ AWS SNS Alerts</span>
+            <span class="feature-pill">✓ 24/7 Digital Access</span>
+        </div>
+    </div>
+</section>
+
+<section class="home-info-section">
+    <div class="section-container">
+        <h2 class="section-title">How it <span class="text-green">Works</span></h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-icon">01</div>
+                <h3>Search Catalog</h3>
+                <p>Browse our digital collection of BSC Computer Science resources and textbooks.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon">02</div>
+                <h3>Submit Request</h3>
+                <p>If a book is unavailable, submit a digital request. Staff are notified instantly via AWS SNS.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon">03</div>
+                <h3>Instant Update</h3>
+                <p>Receive an email the moment your resource is processed and ready for access.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cloud-section">
+    <div class="section-container">
+        <div class="cloud-card">
+            <div class="cloud-text">
+                <h2>Cloud-Native <span class="text-green">Architecture</span></h2>
+                <p>Our platform is built on <strong>Amazon Web Services</strong> to ensure 99.9% availability. Using DynamoDB for lightning-fast data retrieval and EC2 for secure hosting.</p>
+                <a href="/about" class="btn-text">Learn more about our tech stack →</a>
+            </div>
+            <div class="cloud-graphic">
+                <div class="node-box">EC2</div>
+                <div class="node-box">SNS</div>
+                <div class="node-box">DDB</div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

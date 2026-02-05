@@ -1,0 +1,9 @@
+<h2>Library Admin Panel</h2>
+
+<ul>
+{% for r in requests %}
+    <li>{{ r.user }} requested {{ r.book }} ({{ r.status }})</li>
+{% endfor %}
+</ul>
+
+<a href="/dashboard">Back</a>
