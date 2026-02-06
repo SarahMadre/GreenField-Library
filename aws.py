@@ -19,7 +19,7 @@ login_manager.login_view = "login"
 # AWS CONFIG (WORKS FOR BOTH MOTO + REAL AWS)
 # --------------------------------------------------
 REGION = os.getenv("AWS_DEFAULT_REGION", "us-east-1")
-SNS_TOPIC_ARN = "arn:aws:sns:us-east-1:376129887113:LibraryRequests:633b8224-013f-4087-bf5e-7627391e14ba"
+SNS_TOPIC_ARN = "arn:aws:sns:us-east-1:376129887113:LibraryRequests"
 
 
 dynamodb = boto3.resource("dynamodb", region_name=REGION)
